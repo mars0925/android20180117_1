@@ -38,4 +38,33 @@ public class studentDAO {
         }
         return null;
     }
+    //修改
+    public boolean updatestudent(student s)
+    {
+        for(int i = 0;i<=mylist.size();i++)
+        {
+            if (mylist.get(i).id == s.id)
+            {
+                mylist.get(i).name = s.name;
+                mylist.get(i).score = s.score;
+            }
+            return  true;
+
+        }
+        return  false;
+    }
+
+    //刪除
+    public boolean deletestudent(int id)
+    {
+        for(int i = 0;i<=mylist.size();i++)
+        {
+            if (mylist.get(i).id == id)
+            {
+                mylist.remove(i);
+            }
+            return  true;
+        }
+        return  false;
+    }
 }

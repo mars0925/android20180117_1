@@ -47,6 +47,25 @@ public class ExampleUnitTest {
         assertEquals(null, dao.getstudent(3));
     }
 
+    @Test
+    public void test_updatestudent() throws Exception {
+        studentDAO dao = new studentDAO();
+        dao.add(new student(1, "Bob", 95));
+        dao.updatestudent(new student(1, "Bob", 60));
+        assertEquals(60, dao.getstudent(1).score);
+    }
+
+    @Test
+    public void test_deletestudent() throws Exception {
+        studentDAO dao = new studentDAO();
+        dao.add(new student(1, "Bob", 95));
+        dao.add(new student(2, "Mary", 90));
+        dao.deletestudent(1);
+        assertEquals(1, dao.getList().size());
+    }
+
+
+
 }
 
 /*
