@@ -63,6 +63,14 @@ public class ExampleUnitTest {
         dao.deletestudent(1);
         assertEquals(1, dao.getList().size());
     }
+    @Test
+    public void test_deletestudent2() throws Exception {
+        studentDAO dao = new studentDAO();
+        dao.add(new student(1, "Bob", 95));
+        dao.add(new student(2, "Mary", 90));
+        dao.deletestudent(1);
+        assertEquals("Mary", dao.mylist.get(0).name);
+    }
 
 
 
