@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.mars.android20180117_1.data.student;
 import com.mars.android20180117_1.data.studentDAO;
+import com.mars.android20180117_1.data.studentFileDAO;
 
 import java.util.ArrayList;
 
@@ -23,11 +24,14 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     TextView tv4,tv5,tv6;
     ListView listView;
-    final public static studentDAO dao = new studentDAO();
+    public  static studentFileDAO dao ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //這裡起DAO的時候要傳入現在的mainactivity
+        //為了得到getfiledir方法
+        dao = new studentFileDAO(MainActivity.this);
 
         listView = (ListView)findViewById(R.id.listview1);
     }

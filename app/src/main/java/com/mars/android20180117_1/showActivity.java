@@ -15,6 +15,7 @@ public class showActivity extends AppCompatActivity {
     student s;
     TextView tv7,tv8,tv9;
     int id;
+    boolean fastBack = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +35,11 @@ public class showActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        if (fastBack)
+        {
+            finish();
+        }
+
         s = MainActivity.dao.getstudent(id);
         tv7.setText(String.valueOf(s.id));
         tv8.setText(s.name);
@@ -71,6 +77,7 @@ public class showActivity extends AppCompatActivity {
     {
         Intent it = new Intent(showActivity.this,editActivity.class);
         it.putExtra("id",id);
+        fastBack = true;
         startActivity(it);
     }
 

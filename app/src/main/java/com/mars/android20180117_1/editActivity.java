@@ -14,6 +14,7 @@ public class editActivity extends AppCompatActivity {
     EditText ed4,ed5;
     int id;
     student s;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +39,7 @@ public class editActivity extends AppCompatActivity {
 
         student s = new student(id,name,score);
         MainActivity.dao.updatestudent(s);
+
         finish();
 
     }
