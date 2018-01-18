@@ -9,22 +9,19 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.mars.android20180117_1.data.student;
 import com.mars.android20180117_1.data.studentDAO;
 import com.mars.android20180117_1.data.studentFileDAO;
-
-import java.util.ArrayList;
 
 //
 public class MainActivity extends AppCompatActivity {
     TextView tv4,tv5,tv6;
     ListView listView;
-    public  static studentFileDAO dao ;
+    //如果兩個class都實作同一個介面,可以宣告介面,但是new有impliment此介面的class(異質宣告)
+    public  static studentDAO dao ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

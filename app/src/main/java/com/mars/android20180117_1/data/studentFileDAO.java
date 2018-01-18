@@ -19,7 +19,7 @@ import java.util.ArrayList;
  */
 
 //要建立把資料存在手機檔案的DAO
-public class studentFileDAO {
+public class studentFileDAO implements studentDAO{
     public ArrayList<student> mylist;
 
     Context context;

@@ -1,7 +1,7 @@
 package com.mars.android20180117_1;
 
 import com.mars.android20180117_1.data.student;
-import com.mars.android20180117_1.data.studentDAO;
+import com.mars.android20180117_1.data.studentscoreDAO;
 
 import org.junit.Test;
 
@@ -20,7 +20,7 @@ public class ExampleUnitTest {
     @Test
     public void test_add_data() throws Exception
     {
-        studentDAO dao = new studentDAO();
+        studentscoreDAO dao = new studentscoreDAO();
         dao.add(new student(1, "Bob", 95));
         dao.add(new student(2, "Mary", 90));
         assertEquals(2, dao.getList().size());
@@ -28,20 +28,20 @@ public class ExampleUnitTest {
 
     @Test
     public void test_add_data2() throws Exception {
-        studentDAO dao = new studentDAO();
+        studentscoreDAO dao = new studentscoreDAO();
         dao.add(new student(1, "Bob", 95));
         dao.add(new student(2, "Mary", 90));
         assertEquals(90, dao.getList().get(1).score);
     }
     public void test_getStudent() throws Exception {
-        studentDAO dao = new studentDAO();
+        studentscoreDAO dao = new studentscoreDAO();
         dao.add(new student(1, "Bob", 95));
         dao.add(new student(2, "Mary", 90));
         assertEquals(90, dao.getstudent(2).score);
     }
     @Test
     public void test_getStudent1() throws Exception {
-        studentDAO dao = new studentDAO();
+        studentscoreDAO dao = new studentscoreDAO();
         dao.add(new student(1, "Bob", 95));
         dao.add(new student(2, "Mary", 90));
         assertEquals(null, dao.getstudent(3));
@@ -49,7 +49,7 @@ public class ExampleUnitTest {
 
     @Test
     public void test_updatestudent() throws Exception {
-        studentDAO dao = new studentDAO();
+        studentscoreDAO dao = new studentscoreDAO();
         dao.add(new student(1, "Bob", 95));
         dao.updatestudent(new student(1, "Bob", 60));
         assertEquals(60, dao.getstudent(1).score);
@@ -57,7 +57,7 @@ public class ExampleUnitTest {
 
     @Test
     public void test_deletestudent() throws Exception {
-        studentDAO dao = new studentDAO();
+        studentscoreDAO dao = new studentscoreDAO();
         dao.add(new student(1, "Bob", 95));
         dao.add(new student(2, "Mary", 90));
         dao.deletestudent(1);
@@ -65,7 +65,7 @@ public class ExampleUnitTest {
     }
     @Test
     public void test_deletestudent2() throws Exception {
-        studentDAO dao = new studentDAO();
+        studentscoreDAO dao = new studentscoreDAO();
         dao.add(new student(1, "Bob", 95));
         dao.add(new student(2, "Mary", 90));
         dao.deletestudent(1);
