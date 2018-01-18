@@ -21,9 +21,9 @@ public class editActivity extends AppCompatActivity {
         tv12 = (TextView)findViewById(R.id.textView12);
         ed4 = (EditText)findViewById(R.id.editText4);
         ed5 = (EditText)findViewById(R.id.editText5);
+
         Intent it = getIntent();
         id =it.getIntExtra("id",id);
-
         s = MainActivity.dao.getstudent(id);
         tv12.setText(String.valueOf(s.id));
         ed4.setText(s.name);
@@ -40,9 +40,6 @@ public class editActivity extends AppCompatActivity {
         MainActivity.dao.updatestudent(s);
         finish();
 
-
-        //卡住
-        //MainActivity.dao.updatestudent(id,name,)
     }
 
     public void clickcancel(View v)

@@ -13,8 +13,8 @@ import com.mars.android20180117_1.data.student;
 
 public class showActivity extends AppCompatActivity {
     student s;
-     TextView tv7,tv8,tv9;
-     int id;
+    TextView tv7,tv8,tv9;
+    int id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
