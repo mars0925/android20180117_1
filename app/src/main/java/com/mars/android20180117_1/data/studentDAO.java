@@ -38,6 +38,7 @@ public class studentDAO {
         }
         return null;
     }
+
     //修改
     public boolean updatestudent(student s)
     {
@@ -53,7 +54,11 @@ public class studentDAO {
         }
         return  false;
     }
-
+    /*
+    布林值代表這個程式是否刪除成功的訊號
+    如果return  true放到if迴圈之外,他會跑第一次迴圈就傳出成功的訊號
+    呼叫的程式以為他跑成功了,但是實際上for迴圈沒有跑完,可能沒有刪除到
+    */
     //刪除
     public boolean deletestudent(int id)
     {
@@ -62,8 +67,9 @@ public class studentDAO {
             if (mylist.get(i).id == id)
             {
                 mylist.remove(i);
+                return  true;
             }
-            return  true;
+
         }
         return  false;
     }
