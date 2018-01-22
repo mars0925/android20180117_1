@@ -13,13 +13,16 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.mars.android20180117_1.data.DBType;
 import com.mars.android20180117_1.data.studentDAO;
+import com.mars.android20180117_1.data.studentDAOFactory;
 import com.mars.android20180117_1.data.studentFileDAO;
 
 //
 public class MainActivity extends AppCompatActivity {
     TextView tv4,tv5,tv6;
     ListView listView;
+    DBType dbType;
     //如果兩個class都實作同一個介面,可以宣告介面,但是new有impliment此介面的class(異質宣告)
     public  static studentDAO dao ;
     @Override
@@ -28,7 +31,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         //這裡起DAO的時候要傳入現在的mainactivity
         //為了得到getfiledir方法
-        dao = new studentFileDAO(MainActivity.this);
+        //dao = new studentFileDAO(MainActivity.this);
+        dbType = DBType.DB;
+        dao = studentDAOFactory.getDAOInstance(this, dbType);
 
         listView = (ListView)findViewById(R.id.listview1);
     }

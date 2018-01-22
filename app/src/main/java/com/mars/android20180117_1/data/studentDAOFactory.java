@@ -16,6 +16,8 @@ public class studentDAOFactory {
                 return new studentscoreDAO();
             case FILE:
                 return new studentFileDAO(context);
+            case DB:
+                return new StudentDAODBImpl(context);
         }
         return null;
     }
