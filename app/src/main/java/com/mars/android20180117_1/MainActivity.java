@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     TextView tv4,tv5,tv6;
     ListView listView;
     DBType dbType;
+    Myadapter adapter;
     //如果兩個class都實作同一個介面,可以宣告介面,但是new有impliment此介面的class(異質宣告)
     public  static studentDAO dao ;
     @Override
@@ -32,10 +33,22 @@ public class MainActivity extends AppCompatActivity {
         //這裡起DAO的時候要傳入現在的mainactivity
         //為了得到getfiledir方法
         //dao = new studentFileDAO(MainActivity.this);
-        dbType = DBType.DB;
+        dbType = DBType.Could;
         dao = studentDAOFactory.getDAOInstance(this, dbType);
-
         listView = (ListView)findViewById(R.id.listview1);
+        adapter = new Myadapter();
+        listView.setAdapter(adapter);
+        //可以讓item可以被點選,然後作動
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent it = new Intent(MainActivity.this,showActivity.class);
+                //用putExtra把資料送出到showActivity
+                it.putExtra("id",dao.getList().get(i).id);
+                startActivity(it);
+            }
+        });
+
     }
 
     @Override
@@ -53,22 +66,17 @@ public class MainActivity extends AppCompatActivity {
 
         listView.setAdapter(adapter);
         */
-        Myadapter adapter = new Myadapter();
 
-        listView.setAdapter(adapter);
+        refreshData();
 
-        //可以讓item可以被點選,然後作動
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent it = new Intent(MainActivity.this,showActivity.class);
-                //用putExtra把資料送出到showActivity
-                it.putExtra("id",dao.getList().get(i).id);
-                startActivity(it);
-            }
-        });
 
     }
+    public void refreshData()
+    {
+        adapter.notifyDataSetChanged();
+    }
+
+
     //產生menu清單
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

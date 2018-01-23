@@ -40,6 +40,7 @@ public class StudentDAODBImpl implements studentDAO {
         Cursor c = db.query("students", new String[] {"_id", "name", "score"}, null, null, null, null, null);
         if (c.moveToFirst())
         {
+            //把資料庫的資料倒出來 裝到ArrayList裡 再回傳
             student s1 = new student(c.getInt(0), c.getString(1), c.getInt(2));
             mylist.add(s1);
             while(c.moveToNext())
@@ -53,16 +54,28 @@ public class StudentDAODBImpl implements studentDAO {
 
     @Override
     public student getstudent(int id) {
+        Cursor c = db.query("students", new String[] {"_id", "name", "score"}, "_id=?", new String[] {String.valueOf(id)}, null, null, null);
+        if (c.moveToFirst())
+        {
+            student s1 = new student(c.getInt(0), c.getString(1), c.getInt(2));
+            return s1;
+        }
         return null;
     }
 
     @Override
     public boolean updatestudent(student s) {
-        return false;
+        ContentValues cv = new ContentValues();
+        cv.put("name", s.name);
+        cv.put("score", s.score);
+        db.update("students", cv, "_id=?", new String[] {String.valueOf(s.id)});
+        return true;
     }
 
     @Override
     public boolean deletestudent(int id) {
-        return false;
+
+        db.delete("students", "_id=?", new String[] {String.valueOf(id)});
+        return true;
     }
 }
